@@ -5,10 +5,16 @@ const bodyParser = require('body-parser');
 // Initialize express app
 const app = express();
 
+// Import routes
+const calculatorRoutes = require('./routes/calculator');
+
 // Configure middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Register routes
+app.use('/', calculatorRoutes);
 
 // Basic health check endpoint
 app.get('/health', (req, res) => {
